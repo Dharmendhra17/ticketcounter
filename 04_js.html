@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="04_js.css">
+</head>
+<body>
+    <div class="ticket">
+    <h1>Automatic ticket counter</h1>
+    <hr>
+    <labe1 for="inputAge">Enter your Age:</labe1>
+    <input type="text" id="inputAge"placeholder="Enter Age">
+    <p>Are you accompanied by an adult (age &lt;<13yrs):</p>
+    <input type="radio" name="accAdult" value="yes"id="radio1">
+    <label for="radio1">yes</label>
+    <input type="radio" name="accAdult" value="no" id="radio2">
+    <label for="radio2">no</label>
+    <br><br>
+    <button onclick="checkEntry()">check Entry</button><br>
+    <h2 id="entry" style="color: red;"></h2>
+  <script>
+    function checkEntry()
+    {
+        let age= document.getElementById("inputAge").value;
+        let accompanied;
+        const entryElement=document.getElementById("entry");
+        entryElement.innerHTML="";
+        if(document.getElementById("radio1").checked)
+        {
+            accompanied=document.getElementById("radio1").value;
+        }
+        else if(document.getElementById("radio2").checked)
+        {
+            accompanied=document.getElementById("radio2").value;
+        }
+        else
+        {
+            accompanied="Are you accompanied by an adult.please select an option";
+        }
+        if(isNaN(age)|| age==="")
+        {
+            alert("please enter your valid input for age");
+        }
+        else if(accompanied !=='yes'&& accompanied !=='no')
+        {
+            alert(accompanied);
+        }
+        else if(age>=13||(age<13 && accompanied ==='yes'))
+        {
+            entryElement.style.color="#db9c3e";
+            entryElement.innerHTML="you are allowed.Enjoy the Movie";
+        }
+        else if(age<13 && accompanied==='no')
+        {
+            entryElement.style.color="red";
+            entryElement.innerHTML="sorry,you are not allowed";
+        }
+    }
+  </script>
+</div>
+</body>
+</html>
